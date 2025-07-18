@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const register = async (name, email, password) => {
-    const res = await axios.post('http://movieapp.up.railway.app/api/auth/register', { name, email, password })
+    const res = await axios.post('https://movieapp.up.railway.app/api/auth/register', { name, email, password })
     localStorage.setItem('token', res.data.token)
     setToken(res.data.token)
     setUser(res.data.user)
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const login = async (email, password) => {
-    const res = await axios.post('http://movieapp.up.railway.app/api/auth/login', { email, password })
+    const res = await axios.post('https://movieapp.up.railway.app/api/auth/login', { email, password })
     localStorage.setItem('token', res.data.token)
     setToken(res.data.token)
     setUser(res.data.user)
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      axios.get('http://movieapp.up.railway.app/api/auth/me', {
+      axios.get('https://movieapp.up.railway.app/api/auth/me', {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(res => {
